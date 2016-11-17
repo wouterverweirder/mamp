@@ -14,15 +14,21 @@ $ npm install -g mamp
 Start a MAMP server by using this globally installed command:
 
 ```bash
-$ mamp
+$ mamp .
 ```
 
 This will start MAMP in your current directory, and will keep running while the script is running. To stop MAMP, just press CTRL + C or close the terminal window.
 
-You can specify a different document root by passing the --document-root option:
+You can specify a different document root as an argument for the CLI:
 
 ```bash
-$ mamp --document-root ~/Documents/htdocs
+$ mamp ~/Documents/htdocs
+```
+
+See all available options by running the command with --help:
+
+```bash
+$ mamp --help
 ```
 
 ## Node Library
