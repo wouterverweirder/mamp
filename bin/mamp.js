@@ -4,12 +4,11 @@ var mamp = require('../lib/mamp'),
   server = mamp();
 
 var argv = require('yargs')
-  .usage('Usage: mamp [options]')
-  .example('mamp --documentRoot ~/Documents/htdocs', 'starts a MAMP server, hosting a htdocs folder inside your Documents')
+  .usage('Usage: mamp <documentRoot> [options]')
+  .example('mamp .', 'starts a MAMP server hosting your current directory')
+  .example('mamp ~/Documents/htdocs', 'starts a MAMP server, hosting a htdocs folder inside your Documents')
   .help('h')
   .alias('h', 'help')
-  .default('documentRoot', server.defaults.documentRoot)
-  .describe('documentRoot', 'The document root for Apache')
   .default('startScript', server.defaults.startScript)
   .describe('startScript', 'The location of the MAMP start script')
   .default('stopScript', server.defaults.stopScript)
@@ -17,13 +16,6 @@ var argv = require('yargs')
   .default('apacheConfig', server.defaults.apacheConfig)
   .describe('apacheConfig', 'The location of the Apache httpd.conf config file')
   .argv;
-
-
-/*
-startScript: '/Applications/MAMP/bin/start.sh',
-stopScript: '/Applications/MAMP/bin/stop.sh',
-apacheConfig: '/Applications/MAMP/conf/apache/httpd.conf'
-*/
 
 var exitHandler = function(options, err) {
   server.stop();
@@ -41,6 +33,13 @@ process.on('SIGINT', exitHandler.bind(null, {exit:true}));
 process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
 
 
+var documentRoot = server.defaults.documentRoot;
+if(argv._.length > 0) {
+  documentRoot = argv._[0];
+}
 server.start({
-  documentRoot: argv.documentRoot
+  documentRoot: documentRoot,
+  startScript: argv.startScript,
+  stopScript: argv.stopScript,
+  apacheConfig: argv.apacheConfig,
 });
