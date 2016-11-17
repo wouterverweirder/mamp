@@ -1,0 +1,16 @@
+{
+  "name": "mamp",
+  "version": "0.0.1",
+  "description": "manage MAMP on OSX from your node app or the CLI",
+  "main": "lib/mamp.js",
+  "bin": "./bin/mamp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Wouter Verweirder <wouter.verweirder@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "yargs": "^6.4.0"
+  }
+}
