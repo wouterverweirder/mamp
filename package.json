@@ -1,6 +1,6 @@
 {
   "name": "mamp",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "manage MAMP on OSX from your node app or the CLI",
   "main": "lib/mamp.js",
   "bin": "./bin/mamp.js",

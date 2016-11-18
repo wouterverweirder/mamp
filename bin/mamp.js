@@ -9,6 +9,9 @@ var argv = require('yargs')
   .example('mamp ~/Documents/htdocs', 'starts a MAMP server, hosting a htdocs folder inside your Documents')
   .help('h')
   .alias('h', 'help')
+  .alias('p', 'port')
+  .default('port', server.defaults.port)
+  .describe('port', 'The port to bind Apache to')
   .default('startScript', server.defaults.startScript)
   .describe('startScript', 'The location of the MAMP start script')
   .default('stopScript', server.defaults.stopScript)
@@ -39,6 +42,7 @@ if(argv._.length > 0) {
 }
 server.start({
   documentRoot: documentRoot,
+  port: argv.port,
   startScript: argv.startScript,
   stopScript: argv.stopScript,
   apacheConfig: argv.apacheConfig,

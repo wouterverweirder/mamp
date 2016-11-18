@@ -25,6 +25,12 @@ You can specify a different document root as an argument for the CLI:
 $ mamp ~/Documents/htdocs
 ```
 
+Another option is running Apache on a different port, by specifying -p or --port:
+
+```bash
+$ mamp . -p 9000
+```
+
 See all available options by running the command with --help:
 
 ```bash
