@@ -40,9 +40,6 @@ var documentRoot = server.defaults.documentRoot;
 if(argv._.length > 0) {
   documentRoot = argv._[0];
 }
-server.on('start', function() {
-  console.log('[MAMP] started');
-});
 server.on('stop', function() {
   console.log('[MAMP] stopped');
 });
@@ -52,4 +49,7 @@ server.start({
   startScript: argv.startScript,
   stopScript: argv.stopScript,
   apacheConfig: argv.apacheConfig,
+})
+.then(function(){
+  console.log('[MAMP] started');
 });
