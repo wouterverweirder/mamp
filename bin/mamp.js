@@ -40,6 +40,12 @@ var documentRoot = server.defaults.documentRoot;
 if(argv._.length > 0) {
   documentRoot = argv._[0];
 }
+server.on('start', function() {
+  console.log('[MAMP] started');
+});
+server.on('stop', function() {
+  console.log('[MAMP] stopped');
+});
 server.start({
   documentRoot: documentRoot,
   port: argv.port,
